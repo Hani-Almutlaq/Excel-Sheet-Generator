@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ESG by Soft AI</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Excel Sheet Generator <br><span class="powered" style="font-size: 0.5em;"> Powered by Soft AI</span></h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div id="columns-container">
+            <h3>Add your columns</h3>
+            <div class="column-row">
+                <label>Column 1</label>
+                <input type="text" class="input-pill" name="column_name" placeholder="Column name" required/>
+                <input type="text" class="input-pill" name="column_prompt" placeholder="Prompt" required/>
+            </div>
+        </div>
+        <div class="buttons-container">
+            <div class="add-delete-buttons">
+                <button type="button" id="add-column-btn" title="Add another column">+</button>
+                <button type="button" id="delete-column-btn" title="Remove column">−</button>
+            </div>
+            <button type="submit" name="add_column">Submit Columns</button>
+        </div>
+    </form>
+
+    <template id="column-row-template">
+        <div class="column-row">
+            <label></label>
+            <input type="text" class="input-pill" name="column_name" placeholder="Column name"/>
+            <input type="text" class="input-pill" name="column_prompt" placeholder="Prompt"/>
+        </div>
+    </template>
+
+
+</body>
+<script>
+  (function() {
+    const container = document.getElementById('columns-container');
+    const template = document.getElementById('column-row-template');
+    const addBtn = document.getElementById('add-column-btn');
+    const deleteBtn = document.getElementById('delete-column-btn');
+    const MAX_COLUMNS = 10;
+
+    addBtn.addEventListener('click', () => {
+        const count = container.querySelectorAll('.column-row').length;
+
+        if (count >= MAX_COLUMNS) {
+            alert(`Maximum of ${MAX_COLUMNS} columns allowed`);
+            return;
+        }
+
+        const newRow = template.content.cloneNode(true);
+        const label = newRow.querySelector('label');
+        label.textContent = `Column ${count + 1}`;
+        container.appendChild(newRow);
+    });
+
+    deleteBtn.addEventListener('click', () => {
+        const rows = container.querySelectorAll('.column-row');
+
+        if (rows.length <= 1) {
+            alert(`You have to add at least one column.`);
+            return;
+        }
+
+        rows[rows.length - 1].remove();
+    });
+  })();
+</script>
+</html>

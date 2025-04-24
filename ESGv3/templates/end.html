@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Thank you for using me</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Excel Sheet Generator <br><span class="powered" style="font-size: 0.5em;"> Powered by Soft AI</span></h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <h3>Thank you for using our generator</h3>
+
+        <button class="download-sheet" type="submit" name="download_sheet">Click to download sheet</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ESG by Soft AI</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Excel Sheet Generator <br><span class="powered" style="font-size: 0.5em;"> Powered by Soft AI</span></h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Number of rows:</p>
+        <input type="number" name="num_rows" placeholder="Number of Rows" required min="1" max="1000"><br>
+
+        <p>File name:</p>
+        <input type="text" name="file_name" placeholder="e.g., 'dummy_data'" required><br>
+
+        <div class="radio-options">
+            <p>File type:</p>
+            <label>
+                <input type="radio" name="file_type" value="xlsx" required>.xlsx
+            </label>
+            <label>
+                <input type="radio" name="file_type" value="csv" required>.csv
+            </label>
+        </div>
+
+        <div class="generate">
+            <button type="submit" name="generate_columns">Generate Data</button>
+        </div>
+    </form>
+</body>
+</html>
