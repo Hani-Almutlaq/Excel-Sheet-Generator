@@ -9,4 +9,4 @@ TBD
 - Django
 - Bootswatch
 # Link
-You can try it here: https://esg.servexa.net/
+You can try it here: https://esg.servexa.net
