@@ -8,5 +8,5 @@ TBD
 - PyCharm IDE
 - Django
 - Bootswatch
-# Link
+# 🔗 Link
 You can try it here: https://esg.servexa.net
