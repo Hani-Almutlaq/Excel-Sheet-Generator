@@ -7,7 +7,7 @@ It's a small university project with many areas to enhance, but the most importa
 - Simple and appealing UI
 - Users are able to specify the columns
 - Creating Excel sheets with the random data
-# 🪄 Technologies Used
+# 🪄 Technologies
 - Python
 - PyCharm IDE
 - Django
