@@ -15,6 +15,6 @@ It's a small university project with many areas to enhance, but the most importa
 - OpenAI GPT-3.5 API
 # 🔗 Link
 You can try it here: https://esg.servexa.net
-# Contributors
+# 👨‍💻 Contributors
 - [Hani Almutlaq](https://github.com/Hani-Almutlaq)
-- @B5aaR
+- [Abdulrahman Alali](https://github.com/B5aaR)
