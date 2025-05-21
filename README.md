@@ -16,5 +16,5 @@ It's a small university project with many areas to enhance, but the most importa
 # 🔗 Link
 You can try it here: https://esg.servexa.net
 # 👨‍💻 Contributors
-- [Hani Almutlaq](https://github.com/Hani-Almutlaq)
 - [Abdulrahman Alali](https://github.com/B5aaR)
+- [Hani Almutlaq](https://github.com/Hani-Almutlaq)
