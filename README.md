@@ -12,6 +12,6 @@ It's a small university project with many areas to enhance, but the most importa
 - PyCharm IDE
 - Django
 - Bootswatch
-- OpenAI API Platform
+- OpenAI GPT-3.5 API
 # 🔗 Link
 You can try it here: https://esg.servexa.net
