@@ -3,12 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ESG by Soft AI</title>
+    <title>ESG</title>
     {% load static %}
+    <link rel="icon" href="{% static 'images/icon.png' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5/dist/brite/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <h1>Excel Sheet Generator <br><span class="powered" style="font-size: 0.5em;"> Powered by Soft AI</span></h1>
+    <header class="boarder-box bg-primary text-center py-4">
+        <div class="container-fluid">
+            <h1>❇️ Excel Sheet Generator<span class="powered" style="font-size: 0.5em;"> Powered by A&H</span></h1> <!-- maybe find class for the span -->
+        </div>
+    </header>
 
     <form method="POST">
         {% csrf_token %}
@@ -16,38 +23,51 @@
             <h3>Add your columns</h3>
             <div class="column-row">
                 <label>Column 1</label>
-                <input type="text" class="input-pill" name="column_name" placeholder="Column name" required/>
-                <input type="text" class="input-pill" name="column_prompt" placeholder="Prompt" required/>
+                <input type="text" class="input-field" name="column_name" placeholder="Column name" required/>
+                <input type="text" class="input-field" name="column_prompt" placeholder="Prompt" required/>
             </div>
         </div>
         <div class="buttons-container">
             <div class="add-delete-buttons">
-                <button type="button" id="add-column-btn" title="Add another column">+</button>
-                <button type="button" id="delete-column-btn" title="Remove column">−</button>
+                <button type="button" id="add-column-btn" class="btn btn-primary" title="Add another column">+</button>
+                <button type="button" id="delete-column-btn" class="btn btn-danger" title="Remove column">−</button>
             </div>
-            <button type="submit" name="add_column">Submit Columns</button>
+            <button type="submit" class="btn btn-primary" name="add_column">Submit Columns</button>
         </div>
     </form>
 
     <template id="column-row-template">
         <div class="column-row">
             <label></label>
-            <input type="text" class="input-pill" name="column_name" placeholder="Column name"/>
-            <input type="text" class="input-pill" name="column_prompt" placeholder="Prompt"/>
+            <input type="text" class="input-field" name="column_name" placeholder="Column name"/>
+            <input type="text" class="input-field" name="column_prompt" placeholder="Prompt"/>
         </div>
     </template>
 
-
+    <footer class="boarder-box bg-primary text-center fixed-bottom py-4">
+        <div class="container-fluid">
+            <h4>&copy; All rights reserved</h4>
+            <p>
+                <a href="https://github.com/Hani-Almutlaq/Excel-Sheet-Generator" target="_blank" class="text-decoration-none">
+                    <i class="fa-brands fa-github"></i> GitHub Repository
+                </a>
+                 |
+                <a href="https://www.youtube.com/@Soft.Conclusion" target="_blank" class="text-decoration-none">
+                    <i class="fa-brands fa-youtube"></i> Explaining how it works! (Soon)
+                </a>
+            </p>
+        </div>
+    </footer>
 </body>
 <script>
   (function() {
     const container = document.getElementById('columns-container');
     const template = document.getElementById('column-row-template');
-    const addBtn = document.getElementById('add-column-btn');
-    const deleteBtn = document.getElementById('delete-column-btn');
-    const MAX_COLUMNS = 10;
+    const addButton = document.getElementById('add-column-btn');
+    const deleteButton = document.getElementById('delete-column-btn');
+    const MAX_COLUMNS = 5;
 
-    addBtn.addEventListener('click', () => {
+    addButton.addEventListener('click', () => {
         const count = container.querySelectorAll('.column-row').length;
 
         if (count >= MAX_COLUMNS) {
@@ -61,7 +81,7 @@
         container.appendChild(newRow);
     });
 
-    deleteBtn.addEventListener('click', () => {
+    deleteButton.addEventListener('click', () => {
         const rows = container.querySelectorAll('.column-row');
 
         if (rows.length <= 1) {

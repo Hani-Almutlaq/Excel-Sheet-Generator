@@ -4,22 +4,23 @@ import pandas as pd
 import openai
 from django.http import HttpResponse
 
-openai.api_key = "key_value"
+openai.api_key = ""
 
 def generate(prompt, num_rows):
+    estimated_tokens = min(1000, num_rows * 15)
+
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": f"Generate {num_rows} {prompt}, one per line"}],
-            max_tokens=100,
-            temperature=0.7  # Feature to be added: by letting the user change this number the randomness will increase
+            model = "gpt-3.5-turbo",
+            messages = [{"role": "user", "content": f"Generate random {num_rows} {prompt}, one per line, no problem with duplicate values"}],
+            max_tokens = estimated_tokens,
+            temperature = 0.7
         )
         items = response.choices[0].message.content.strip().split("\n")
         items = [re.sub(r"^\d+[\.\)-]\s*", "", item).strip() for item in items]
 
-        # maybe try forcing the output to be what the API generated, because teh issue with printing item 33, item 34, is the lines below🪄
         if len(items) < num_rows:
-            items.extend([f"Item {i + 1}" for i in range(len(items), num_rows)])
+            items.extend([f"MAX-TOKENS {i + 1}" for i in range(len(items), num_rows)])
         return items[:num_rows]
 
     except Exception as e:

@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from .generator import generate_columns
 
 column_definitions = []
-generation_params = {}
+generation_parameters = {}
 
 def index(request):
-    global column_definitions, generation_params
+    global column_definitions
 
     if request.method == "POST":
         if "add_column" in request.POST:
@@ -16,27 +16,27 @@ def index(request):
                     column_definitions.append((column_name, column_prompt))
             return redirect('generate')
 
-    return render(request, "index.html", {"columns": column_definitions})
+    return render(request, "index.html")
 
 def generate(request):
-    global column_definitions, generation_params
+    global generation_parameters
 
     if request.method == "POST":
         if "generate_columns" in request.POST:
-            generation_params = {
+            generation_parameters = {
                 'num_rows': int(request.POST.get("num_rows")),
                 'file_name': request.POST.get("file_name"),
                 'file_type': request.POST.get("file_type")
             }
             return redirect('end')
 
-    return render(request, "generate.html", {'file_name': generation_params.get('file_name')})
+    return render(request, "generate.html")
 
 def end(request):
-    global column_definitions, generation_params
+    global column_definitions, generation_parameters
 
     if request.method == "POST":
         if "download_sheet" in request.POST:
-            return generate_columns(column_definitions, generation_params['num_rows'], generation_params['file_name'], generation_params['file_type'])
+            return generate_columns(column_definitions, generation_parameters['num_rows'], generation_parameters['file_name'], generation_parameters['file_type'])
 
     return render(request, "end.html")

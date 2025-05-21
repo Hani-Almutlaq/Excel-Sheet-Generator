@@ -3,18 +3,40 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Thank you for using me</title>
+    <title>ESG</title>
     {% load static %}
+    <link rel="icon" href="{% static 'images/icon.png' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5/dist/brite/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <h1>Excel Sheet Generator <br><span class="powered" style="font-size: 0.5em;"> Powered by Soft AI</span></h1>
+    <header class="boarder-box bg-primary text-center py-4">
+        <div class="container-fluid">
+            <h1>❇️ Excel Sheet Generator<span class="powered" style="font-size: 0.5em;"> Powered by A&H</span></h1> <!-- maybe find class for the span -->
+        </div>
+    </header>
 
     <form method="POST">
         {% csrf_token %}
-        <h3>Thank you for using our generator</h3>
+        <h3>Thank you for using ESG generator</h3>
 
-        <button class="download-sheet" type="submit" name="download_sheet">Click to download sheet</button>
+        <button class="btn btn-primary" type="submit" name="download_sheet">Click to download sheet</button>
     </form>
+
+    <footer class="boarder-box bg-primary text-center fixed-bottom py-4">
+        <div class="container-fluid">
+            <h4>&copy; All rights reserved</h4>
+            <p>
+                <a href="https://github.com/Hani-Almutlaq/Excel-Sheet-Generator" target="_blank" class="text-decoration-none">
+                    <i class="fa-brands fa-github"></i> GitHub Repository
+                </a>
+                 |
+                <a href="" target="_blank" class="text-decoration-none">
+                    <i class="fa-brands fa-youtube"></i> Explaining how it works! (Soon)
+                </a>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
