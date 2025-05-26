@@ -11,8 +11,8 @@ It's a small project with many aspects to enhance, but the most important is wha
 - Python
 - PyCharm IDE
 - Django
-- Bootswatch
 - OpenAI GPT-3.5 API
+- Bootswatch
 # 👨‍💻 Contributors
 - [Abdulrahman Alali](https://github.com/B5aaR)
 - [Hani Almutlaq](https://github.com/Hani-Almutlaq)
